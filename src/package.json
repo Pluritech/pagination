@@ -1,0 +1,26 @@
+{
+  "name": "@pluritech/pagination",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pluritech/pagination"
+  },
+  "author": {
+    "name": "Lucas C. Correa &amp;&amp; Mateus Duraes",
+    "email": "lucas@pluritech.com.br"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pluritech/pagination/issues"
+  },
+  "module": "@pluritech/pagination.js",
+  "typings": "@pluritech/pagination.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
