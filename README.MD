@@ -1,11 +1,11 @@
-# pagination
+# @pluritech/@pluritech/pagination
 
 ## Installation
 
 To install this library, run:
 
 ```bash
-$ npm install pagination --save
+$ npm install @pluritech/pagination --save
 ```
 
 ## Consuming your library
@@ -13,7 +13,7 @@ $ npm install pagination --save
 Once you have published your library to npm, you can import your library in any Angular application by running:
 
 ```bash
-$ npm install pagination
+$ npm install @pluritech/pagination
 ```
 
 and then from your Angular `AppModule`:
@@ -25,7 +25,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { SampleModule } from 'pagination';
+import { SampleModule } from '@pluritech/pagination';
 
 @NgModule({
   declarations: [
