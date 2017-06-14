@@ -1,4 +1,4 @@
-# @pluritech/@pluritech/pagination
+# @pluritech/pagination
 
 ## Installation
 
