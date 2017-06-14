@@ -4,10 +4,8 @@ import { Page } from './models/page';
 
 @Component({
   selector: 'pluritech-pagination',
-  template: `
-    <h1>Here is pagination</h1>
-    {{total}}
-  `
+  templateUrl: './pagination.component.html',
+  styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnChanges {
 
