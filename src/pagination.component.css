@@ -1,3 +1,7 @@
-.content {
-    color: red;
+.paginator-container {
+    display: flex;
+    flex-direction: row;    
+}
+.direction-column {
+    flex-direction: column;
 }
