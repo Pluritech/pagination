@@ -13,7 +13,6 @@ export class PaginationComponent implements OnChanges {
   private lastPage: number;
   private pageActive: number = 1;
   private totPages: number;
-  private arrayPages: number[] = [];
 
   @Input() total: number = 0;
   @Input() limit: number = 1;
