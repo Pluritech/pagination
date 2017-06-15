@@ -1,17 +1,17 @@
-import { Component, Input, OnChanges, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnChanges, EventEmitter, Output, OnInit } from '@angular/core';
 
-import { Page } from './models/page';
+import { Page } from 'models/page';
 
 @Component({
-  selector: 'pluritech-pagination',
+  selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnChanges {
 
-  private firstPage: number;
+  private firstPage: number = 1;
   private lastPage: number;
-  private pageActive: number = 4;
+  private pageActive: number = 1;
   private totPages: number;
   private lengthPages: number = 7;
   private middlePos: number = Math.ceil(this.lengthPages/2);
@@ -39,20 +39,30 @@ export class PaginationComponent implements OnChanges {
   }
 
   public goPageStr(n: string) {
-    this.goPage(Number.parseInt(n));
+    let page = Number.parseInt(n);
+    if(this.canGoPage(page)) {
+      this.goPage(page);
+    }
+  }
+
+  public canGoPage(nPage: number) {
+    if(nPage == 0 || nPage == this.pageActive) {
+      return false;
+    }
+    return true;
   }
 
   private goPage(nPage: number) {
     const offset = this.limit * (nPage - 1);
     this.pageActive = nPage;
     this.initPagination();
-    console.log('goPage', nPage);
-    this.changePage.emit({
+    const objEvent: Page = {
       limit: this.limit,
       nPage: nPage,
       offset: offset,
       total: this.total
-    });
+    };
+    this.changePage.emit(objEvent);
   }
 
   public showPagination(): boolean {
