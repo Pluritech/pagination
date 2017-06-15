@@ -1,3 +1,7 @@
+body {
+  background-color: #efefef;
+}
+
 .paginator-container {
   display: flex;
   justify-content: center;
@@ -36,21 +40,38 @@
   margin: 5px;
   align-self: center;
 }
-.paginator-container .button:active .fa {
-  color: #CCD5FB;
+.paginator-container .button.right {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7.5px 0 7.5px 13.0px;
+  border-color: transparent transparent transparent #333;
+}
+.paginator-container .button.right:active {
+  border-color: transparent transparent transparent #CCD5FB;
+}
+.paginator-container .button.left {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 7.5px 13.0px 7.5px 0;
+  border-color: transparent #333 transparent transparent;
+}
+.paginator-container .button.left:active {
+  border-color: transparent #CCD5FB transparent transparent;
 }
 
-
 /*
-SASS - INSTALAR O SASS NO PROJETO
 $active: #CCD5FB;
 $not-active: #BBBCBD;
 @mixin box-shadow {
    -webkit-box-shadow: .5px 3px 5px 3px rgba(0,0,0,0.75);
--moz-box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.75);
-box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.75);
+    box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.75);
 }
-
+body {
+  background-color: lighten($not-active, 20%);
+}
 .paginator-container{
   display: flex;
   justify-content: center; 
@@ -84,11 +105,28 @@ box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.75);
   }
   .button {    
     margin: 5px;
-    align-self: center;
-    &:active {
-      .fa {
-        color: $active;
+    align-self: center;    
+    &.right{
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 7.5px 0 7.5px 13.0px;
+      border-color: transparent transparent transparent #333; 
+      &:active {
+        border-color: transparent transparent transparent $active; 
+      }
+    }
+    &.left{
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 7.5px 13.0px 7.5px 0;
+      border-color: transparent #333 transparent transparent;
+      &:active {
+        border-color: transparent $active transparent transparent; 
       }
     }
   }
-}*/
+}
+
+*/
