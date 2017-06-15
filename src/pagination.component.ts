@@ -1,27 +1,29 @@
-import { Component, Input, OnChanges, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, EventEmitter, Output } from '@angular/core';
 
-import { Page } from 'models/page';
+import { PageEvent } from './models/page-event';
 
 @Component({
-  selector: 'app-pagination',
+  selector: 'pluritech-pagination',
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnChanges {
 
-  private firstPage: number = 1;
+  private firstPage = 1;
   private lastPage: number;
-  private pageActive: number = 1;
+  private pageActive = 1;
   private totPages: number;
-  private lengthPages: number = 7;
-  private middlePos: number = Math.ceil(this.lengthPages/2);
+  private lengthPages = 7;
+  private middlePos: number = Math.ceil(this.lengthPages / 2);
 
   public listPages = {};
 
-  @Input() total: number = 0;
-  @Input() limit: number = 1;
+  private interval: any;
 
-  @Output() changePage: EventEmitter<Page> = new EventEmitter<Page>();
+  @Input() total = 0;
+  @Input() limit = 1;
+
+  @Output() changePage: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
   constructor() {
   }
@@ -39,14 +41,14 @@ export class PaginationComponent implements OnChanges {
   }
 
   public goPageStr(n: string) {
-    let page = Number.parseInt(n);
-    if(this.canGoPage(page)) {
+    const page = Number.parseInt(n);
+    if (this.canGoPage(page)) {
       this.goPage(page);
     }
   }
 
   public canGoPage(nPage: number) {
-    if(nPage == 0 || nPage == this.pageActive) {
+    if (nPage == 0 || nPage == this.pageActive) {
       return false;
     }
     return true;
@@ -56,13 +58,13 @@ export class PaginationComponent implements OnChanges {
     const offset = this.limit * (nPage - 1);
     this.pageActive = nPage;
     this.initPagination();
-    const objEvent: Page = {
+    const objEvent: PageEvent = {
       limit: this.limit,
       nPage: nPage,
       offset: offset,
       total: this.total
     };
-    this.changePage.emit(objEvent);
+    this.emitEventChangePage(objEvent);
   }
 
   public showPagination(): boolean {
@@ -86,21 +88,41 @@ export class PaginationComponent implements OnChanges {
       factor = (factor < 0 ? factor * -1 : factor); // only postive
       numberPage = this.pageActive + factor;
     }
-    if(numberPage > this.totPages || numberPage <= 0) {
+    if (numberPage > this.totPages || numberPage <= 0) {
       numberPage = 0;
     }
-    return numberPage < 10 ? `0${numberPage}` : numberPage+'';
+    return numberPage < 10 ? `0${numberPage}` : numberPage + '';
+  }
+
+  public continuous(direction: string): void {
+    this.interval = setInterval(() => {
+      if (direction ===  'right') {
+        this.next();
+      } else {
+        this.prev();
+      }
+    }, 200);
+  }
+
+  public stopContinuous(): void {
+    clearInterval(this.interval);
+    this.interval = null;
   }
 
   private initPagination() {
-    for(let i = 1; i <= this.lengthPages; i++) {
+    for (let i = 1; i <= this.lengthPages; i++) {
       this.listPages[i] = this.getNumberPage(i);
     }
-    console.log(this.listPages);
+  }
+
+  private emitEventChangePage(objEvent: PageEvent): void {
+    if (!this.interval || this.pageActive === this.lastPage) {
+      console.log('emitted', objEvent);
+      this.changePage.emit(objEvent);
+    }
   }
 
   ngOnChanges() {
-    console.log('ngOnChanges');
     if (this.showPagination()) {
       // init the pagination
       this.totPages = this.lastPage = Math.ceil((this.total / this.limit));

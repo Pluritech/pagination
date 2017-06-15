@@ -1,4 +1,4 @@
-export class Page {
+export class PageEvent {
   nPage: number;
   total: number;
   offset: number;
