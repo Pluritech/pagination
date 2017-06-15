@@ -1,7 +1,94 @@
 .paginator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.paginator-container .paginator {
+  display: flex;
+  flex-direction: row;
+}
+.paginator-container .page {
+  padding: 5px;
+  border-radius: 50%;
+  margin: 0px 4px;
+  border: 1px solid #BBBCBD;
+  background-color: #BBBCBD;
+  font-size: 0.7em;
+  align-self: center;
+}
+.paginator-container .page.first, .paginator-container .page.last {
+  font-size: 0.5em;
+  padding: 3px;
+  border-radius: 50%;
+  align-self: center;
+}
+.paginator-container .page.active {
+  -webkit-box-shadow: 0.5px 3px 5px 3px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.75);
+  border: 1px solid #CCD5FB;
+  background-color: #CCD5FB;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1em;
+}
+.paginator-container .button {
+  margin: 5px;
+  align-self: center;
+}
+.paginator-container .button:active .fa {
+  color: #CCD5FB;
+}
+
+
+/*
+SASS - INSTALAR O SASS NO PROJETO
+$active: #CCD5FB;
+$not-active: #BBBCBD;
+@mixin box-shadow {
+   -webkit-box-shadow: .5px 3px 5px 3px rgba(0,0,0,0.75);
+-moz-box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.75);
+box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.75);
+}
+
+.paginator-container{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  .paginator {
     display: flex;
-    flex-direction: row;    
-}
-.direction-column {
-    flex-direction: column;
-}
+    flex-direction: row;
+  }  
+  .page {        
+    padding: 5px;
+    border-radius: 50%;
+    margin: 0px 4px;
+    border: 1px solid $not-active;
+    background-color: $not-active;
+    font-size: 0.7em;
+    align-self: center;
+    &.first, &.last {
+      font-size: 0.5em;
+      padding: 3px;
+      border-radius: 50%;
+      align-self: center;
+    }
+    &.active {   
+      @include box-shadow;
+      border: 1px solid $active;
+      background-color: $active;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1em;
+    }
+  }
+  .button {    
+    margin: 5px;
+    align-self: center;
+    &:active {
+      .fa {
+        color: $active;
+      }
+    }
+  }
+}*/
