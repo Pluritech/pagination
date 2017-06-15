@@ -4,13 +4,14 @@
     <div class="button left ">      
     </div>
     
-    <div class="page first">01</div>
-    <div class="page">02</div>
-    <div class="page pre-active">02</div>
-    <div class="page active">03</div>
-    <div class="page pre-active">04</div>
-    <div class="page">02</div>
-    <div class="page last">05</div>    
+    <div class="page first" (click)="goPageStr(listPages[1])">{{listPages[1]}}</div>
+    <div class="page" (click)="goPageStr(listPages[2])">{{listPages[2]}}</div>
+    <div class="page pre-active" (click)="goPageStr(listPages[3])">{{listPages[3]}}</div>
+    <div class="page active" (click)="goPageStr(listPages[4])">{{listPages[4]}}</div>
+    <div class="page pre-active" (click)="goPageStr(listPages[5])">{{listPages[5]}}</div>
+    <div class="page" (click)="goPageStr(listPages[6])">{{listPages[6]}}</div>
+    <div class="page last" (click)="goPageStr(listPages[7])">{{listPages[7]}}</div>
+ 
     <div class="button right">      
     </div>
     
