@@ -65,6 +65,11 @@ offset | The number of registers will not be included in the next query to the s
 total | The total of registers you have
 
 You can also change the pages pressing the mouse on the arrow-buttons, in this case, the event will be emitted only when the mouse leaves the button or on the mouseup event.
+
+## Credits
+[Generator Angular 2 Library](https://github.com/jvandemo/generator-angular2-library)
+
+
 ## License
 
 MIT © [Lucas C. Correa &amp;&amp; Mateus Duraes](mailto:lucas@pluritech.com.br)
