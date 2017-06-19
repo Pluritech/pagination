@@ -23,10 +23,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { PaginationModule } from '@pluritech/pagination';
 
-// Import your library
-import { SampleModule } from '@pluritech/pagination';
+
+// Import pagination library
+import { PaginationModule } from '@pluritech/pagination';
 
 @NgModule({
   declarations: [
