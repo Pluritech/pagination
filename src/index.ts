@@ -9,10 +9,10 @@ export * from './pagination.component';
     CommonModule
   ],
   declarations: [
-    PaginationComponent,
+    PaginationComponent
   ],
   exports: [
-    PaginationComponent,
+    PaginationComponent
   ]
 })
 export class PaginationModule {
