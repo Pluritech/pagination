@@ -1,12 +1,12 @@
 <div class="paginator-container">
   <div class="paginator rounded">
-    
+
     <div class="button left"
-      [ngClass]="{'cant-click': !canPrev()}" 
+      [ngClass]="{'cant-click': !canPrev()}"
       (click)="prev()"
       (mousedown)="continuous('left')"
-      (mouseup)="stopContinuous()"
-      (mouseleave)="stopContinuous()">
+      (mouseup)="onMouseUp()"
+      (mouseleave)="onMouseLeave()">
     </div>
 
     <div class="page first" [ngClass]="{'cant-click': !canGoPage(listPages[1])}" (click)="goPageStr(listPages[1])">{{listPages[1]}}</div>
@@ -17,12 +17,12 @@
     <div class="page" [ngClass]="{'cant-click': !canGoPage(listPages[6])}" (click)="goPageStr(listPages[6])">{{listPages[6]}}</div>
     <div class="page last" [ngClass]="{'cant-click': !canGoPage(listPages[7])}" (click)="goPageStr(listPages[7])">{{listPages[7]}}</div>
 
-    <div class="button right" 
+    <div class="button right"
       [ngClass]="{'cant-click': !canNext()}"
-      (click)="next()" 
-      (mousedown)="continuous('right')" 
-      (mouseup)="stopContinuous()"
-      (mouseleave)="stopContinuous()">
+      (click)="next()"
+      (mousedown)="continuous('right')"
+      (mouseup)="onMouseUp()"
+      (mouseleave)="onMouseLeave()">
     </div>
 
   </div>

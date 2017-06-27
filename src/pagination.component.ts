@@ -8,13 +8,13 @@ import { PageEvent } from './models/page-event';
   styleUrls: ['./pagination.component.css']
 })
 export class PaginationComponent implements OnChanges {
-
   private firstPage = 1;
   private lastPage: number;
   private pageActive = 1;
   private totPages: number;
   private lengthPages = 7;
   private middlePos: number = Math.ceil(this.lengthPages / 2);
+  private lastPageEmmited: PageEvent;
 
   public listPages = {};
 
@@ -104,9 +104,22 @@ export class PaginationComponent implements OnChanges {
     }, 200);
   }
 
-  public stopContinuous(): void {
-    clearInterval(this.interval);
-    this.interval = null;
+  public onMouseLeave() {
+    this.stopContinuous();
+    if(this.lastPageEmmited) { // Ensure that not emmit on first time
+      this.goPage(this.pageActive);
+    }
+  }
+
+  public onMouseUp() {
+    this.stopContinuous();
+  }
+
+  private stopContinuous(): void {
+    if (this.interval) {
+      clearInterval(this.interval);
+      this.interval = null;
+    }
   }
 
   private initPagination() {
@@ -116,15 +129,18 @@ export class PaginationComponent implements OnChanges {
   }
 
   private emitEventChangePage(objEvent: PageEvent): void {
-    if (!this.interval || this.pageActive === this.lastPage) {
-      console.log('emitted', objEvent);
+    // console.log('NOT EMIT emitEventChangePage', this.lastPageEmmited);
+    const canEmmit = (!this.interval || this.pageActive === this.lastPage) &&
+      (this.lastPageEmmited == null || this.lastPageEmmited.nPage != objEvent.nPage);
+    if (canEmmit) {
+      // console.log('emitted', objEvent);
+      this.lastPageEmmited = objEvent;
       this.changePage.emit(objEvent);
     }
   }
 
   ngOnChanges() {
-    if (this.showPagination()) {
-      // init the pagination
+    if (this.showPagination()) { // init the pagination
       this.totPages = this.lastPage = Math.ceil((this.total / this.limit));
       this.initPagination();
 
