@@ -139,11 +139,19 @@ export class PaginationComponent implements OnChanges {
     }
   }
 
+  private _initAttr() {
+    this.listPages = {};
+    this.firstPage = 1;
+    this.pageActive = 1;
+    this.lengthPages = 7;
+    this.middlePos = Math.ceil(this.lengthPages / 2);
+  }
+
   ngOnChanges() {
+    this._initAttr();
     if (this.showPagination()) { // init the pagination
       this.totPages = this.lastPage = Math.ceil((this.total / this.limit));
       this.initPagination();
-
     }
   }
 
