@@ -1,6 +1,6 @@
 # @pluritech/pagination
 
-This Angular Library can help you to make easy paginate. (Need server side)
+This Angular Library can help you to implement an easy pagination. (Needs some server side)
 
 ![Paginator preview](./paginator.png)
 
@@ -43,7 +43,7 @@ import { PaginationModule } from '@pluritech/pagination';
 export class AppModule { }
 ```
 
-Once the library is imported, you can use the paginator component like the following:
+Once the library is imported, you can use the pagination component like the following:
 
 ```xml
 <pluritech-pagination 
@@ -55,14 +55,14 @@ Once the library is imported, you can use the paginator component like the follo
 
 ## How it works?
 
-The paginator component has some events. You can click directly in a page, or, you can click in one of the arrow-buttons (right/left), when you do it a event will be emitted with the following data (JavaScript object):
+The pagination component has some events. You can click directly in a page, or, you can click in one of the arrow-buttons (right/left), when you do it an event will be emitted with the following data (JavaScript object):
 
 Key | Value
 --- | -----
-limit | The limit of registers in each page 
-nPage | The number of the page you're going
-offset | The number of registers will not be included in the next query to the server
-total | The total of registers you have
+limit | The limit of records in each page 
+nPage | The number of the current page
+offset | The number of records that should be skipped in the next server side query
+total | The total of records
 
 You can also change the pages pressing the mouse on the arrow-buttons, in this case, the event will be emitted only when the mouse leaves the button or on the mouseup event.
 
